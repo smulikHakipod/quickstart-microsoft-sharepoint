@@ -657,6 +657,9 @@
                                 },
                                 "authentication": "S3AccessCreds"
                             },
+                            "C:\\cfn\\scripts\\Disable-IESecurity.ps1": {
+                                "source":  "https://raw.githubusercontent.com/smulikHakipod/quickstart-microsoft-sharepoint/master/scripts/Disable-IESecurity.ps1"
+                            },
                             "C:\\cfn\\scripts\\Unzip-Archive.ps1": {
                                 "source": {
                                     "Fn::Sub": [
@@ -912,7 +915,11 @@
                                 "command": "powershell.exe -Command \"C:\\cfn\\scripts\\Mount-DiskImage.ps1 -ImagePath 'C:\\cfn\\downloads\\sharepoint.img'\"",
                                 "waitAfterCompletion": "0"
                             },
-                            "d-install-prerequisiteinstaller": {
+                            "d-disable-iesecurity": {
+                                "command": "powershell.exe -ExecutionPolicy RemoteSigned -Command \"C:\\cfn\\scripts\\Disable-IESecurity.ps1\"",
+                                "waitAfterCompletion": "forever"
+                            }
+                            "e-install-prerequisiteinstaller": {
                                 "command": "powershell.exe -ExecutionPolicy RemoteSigned -Command \"C:\\cfn\\scripts\\Install-SP2016PreReqs.ps1\"",
                                 "waitAfterCompletion": "forever"
                             }
